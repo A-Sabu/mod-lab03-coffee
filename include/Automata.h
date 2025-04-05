@@ -13,7 +13,7 @@ public:
 	void coin(float cash_now);
 	vector<string> getMenu();
 	void printMenu();
-	auto getState();
+	string getState();
 	void choice(int user_choice);
 	void check();
 	void cancel();
@@ -33,5 +33,5 @@ private:
 	STATES _state;
 	float _user_cash;
 	int _user_choice;
-	float giveСhange();
+	float giveChange();
 };
