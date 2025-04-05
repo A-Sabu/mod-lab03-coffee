@@ -1,17 +1,20 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <chrono>
+#include <thread>
 using namespace std;
 
 class Automata {
 public:
-	Automata(float cash, vector<string> menu, vector<float> prices);
+	Automata(vector<string> menu, vector<float> prices);
 	void on();
 	void off();
-	void coin();
-	void etMenu();
-	void getState();
-	void choice();
+	void coin(float cash_now);
+	vector<string> getMenu();
+	void printMenu();
+	auto getState();
+	void choice(int user_choice);
 	void check();
 	void cancel();
 	void cook();
@@ -28,4 +31,7 @@ private:
 	vector<string> _menu;
 	vector<float> _prices;
 	STATES _state;
+	float _user_cash;
+	int _user_choice;
+	float giveСhange();
 };
