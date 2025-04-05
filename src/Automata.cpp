@@ -21,7 +21,7 @@ void Automata::off() {
 	}
 };
 void Automata::coin(float cash_now){
-	if (_state == WAIT or _state == ACCEPT) {
+	if (_state == WAIT || _state == ACCEPT) {
 		_state = ACCEPT;
 		_user_cash += cash_now;
 	} else {
@@ -40,13 +40,34 @@ void Automata::printMenu() {
 	}
 }
 
-auto Automata::getState() {
-	return _state;
+string Automata::getState() {
+	string string_state;
+	switch (_state) {
+		case OFF:
+			string_state = "OFF";
+			break;
+		case WAIT:
+			string_state = "WAIT";
+			break;
+		case ACCEPT:
+			string_state = "ACCEPT";
+			break;
+		case CHECK:
+			string_state = "CHECK";
+			break;
+		case COOK:	
+			string_state = "COOK";
+			break;
+		default:
+			string_state = "UNKNOWN";
+			break;
+	}
+	return string_state;
 };
 
 void Automata::choice(int user_choice) {
 	if (_state == ACCEPT) {
-		if (0 <= user_choice and user_choice < _menu.size()) {
+		if (0 <= user_choice && user_choice < _menu.size()) {
 			_user_choice = user_choice;
 			_state = CHECK;
 
@@ -74,8 +95,8 @@ void Automata::check() {
 	}
 };
 void Automata::cancel() {
-	if (_state == ACCEPT or _state == CHECK) {
-		giveСhange();
+	if (_state == ACCEPT || _state == CHECK) {
+		giveChange();
 		_state = WAIT;
 		printMenu();
 
@@ -87,7 +108,6 @@ void Automata::cook() {
 	if (_state == CHECK) {
 		_state = COOK;
 		cout << "> Start cooking" << endl;
-		this_thread::sleep_for(std::chrono::seconds(10));
 		cout << "> Finish cooking" << endl;
 		finish();
 
@@ -98,14 +118,14 @@ void Automata::cook() {
 void Automata::finish() {
 	if (_state == COOK) {
 		_cash += _user_cash - _prices[_user_choice];
-		giveСhange();
+		giveChange();
 		_state = WAIT;
 
 	} else {
 		cout << "> Denied execution" << endl;
 	}
 };
-float Automata::giveСhange() {
+float Automata::giveChange() {
 	float change = _user_cash;
 	_user_cash = 0;
 	_user_choice = -1;
