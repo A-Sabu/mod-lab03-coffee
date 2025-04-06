@@ -5,10 +5,10 @@
 #include <vector>
 #include <string>
 
-TEST(task_state, test1) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
+std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
+std::vector<float> prices = { 1.5, 2.5, 5.5 };
 
+TEST(task_state, test1) {
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -18,9 +18,6 @@ TEST(task_state, test1) {
 }
 
 TEST(task_state, test2) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -31,9 +28,6 @@ TEST(task_state, test2) {
 }
 
 TEST(task_state, test3) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -45,9 +39,6 @@ TEST(task_state, test3) {
 }
 
 TEST(task_state, test4) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -60,9 +51,6 @@ TEST(task_state, test4) {
 }
 
 TEST(task_state, test5) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -76,9 +64,6 @@ TEST(task_state, test5) {
 }
 
 TEST(task_state, test6) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -89,9 +74,6 @@ TEST(task_state, test6) {
 }
 
 TEST(task_state, test7) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -103,9 +85,6 @@ TEST(task_state, test7) {
 }
 
 TEST(task_state, test8) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -118,9 +97,6 @@ TEST(task_state, test8) {
 }
 
 TEST(task_state, test9) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -132,9 +108,6 @@ TEST(task_state, test9) {
 }
 
 TEST(task_state, test10) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -147,9 +120,6 @@ TEST(task_state, test10) {
 }
 
 TEST(task_state, test11) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
@@ -161,9 +131,6 @@ TEST(task_state, test11) {
 }
 
 TEST(task_cash, test1) {
-    std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
-    std::vector<float> prices = { 1.5, 2.5, 5.5 };
-
     Automata coffeeMachine(menu, prices);
 
     coffeeMachine.on();
