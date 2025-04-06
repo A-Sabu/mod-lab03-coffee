@@ -169,5 +169,5 @@ TEST(task_state, test1) {
     coffeeMachine.coin(2);
     
     float result = coffeeMachine.giveChange();
-    EXPECT_EQ("4", result);
+    EXPECT_EQ("4.0", result);
   }
