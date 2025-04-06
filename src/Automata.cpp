@@ -4,14 +4,14 @@
 #include <vector>
 #include <string>
 
-Automata::Automata(std::vector<std::string> menu, std::vector<float> prices) : _cash(0), _menu(menu), _prices(prices), _state(OFF), _user_cash(0), _user_choice(-1) {
-
+Automata::Automata(std::vector<std::string> menu, std::vector<float> prices) :
+_cash(0), _menu(menu), _prices(prices), _state(OFF), _user_cash(0), _user_choice(-1) {
 }
 
 void Automata::on() {
         if (_state == OFF) {
                 _state = WAIT;
-                printMenu();		
+                printMenu();
         } else {
                 std::cout << "> Denied execution" << std::endl;
         }
@@ -24,12 +24,12 @@ void Automata::off() {
         }
 }
 void Automata::coin(float cash_now) {
-	if (_state == WAIT || _state == ACCEPT) {
-		_state = ACCEPT;
-		_user_cash += cash_now;
-	} else {
-		std::cout << "> Denied execution" << std::endl;
-	}
+        if (_state == WAIT || _state == ACCEPT) {
+                _state = ACCEPT;
+                _user_cash += cash_now;
+        } else {
+                std::cout << "> Denied execution" << std::endl;
+        }
 }
 std::vector<std::string> Automata::getMenu() {
         return _menu;
@@ -37,7 +37,8 @@ std::vector<std::string> Automata::getMenu() {
 void Automata::printMenu() {
         std::cout << "> Menu:" << std::endl;
         for (int i = 0; i < _menu.size(); i++) {
-                std::cout << i << ". [" << _menu[i] << "] - " << _prices[i] << "$" << std::endl;
+                std::cout << i << ". [" << _menu[i] << "] - ";
+		std::cout << _prices[i] << "$" << std::endl;
         }
 }
 std::string Automata::getState() {
