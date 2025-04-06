@@ -19,6 +19,7 @@ public:
 	void cancel();
 	void cook();
 	void finish();
+	float giveChange();
 private:
 	enum STATES {
 		OFF,
@@ -33,5 +34,4 @@ private:
 	STATES _state;
 	float _user_cash;
 	int _user_choice;
-	float giveChange();
 };
