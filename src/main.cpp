@@ -5,8 +5,8 @@
 #include <string>
 
 int main(int argc, char** argv) {
-        vector<string> menu = { "Capuchino", "Expresso", "Raf" };
-        vector<float> prices = { 1.5, 2.5, 5.5 };
+        std::vector<std::string> menu = { "Capuchino", "Expresso", "Raf" };
+        std::vector<float> prices = { 1.5, 2.5, 5.5 };
 
         Automata coffeeMachine(menu, prices);
 
