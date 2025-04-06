@@ -5,7 +5,12 @@
 #include <string>
 
 Automata::Automata(std::vector<std::string> menu, std::vector<float> prices) :
-_cash(0), _menu(menu), _prices(prices), _state(OFF), _user_cash(0), _user_choice(-1) {
+_cash(0),
+_menu(menu),
+_prices(prices),
+_state(OFF),
+_user_cash(0),
+_user_choice(-1) {
 }
 
 void Automata::on() {
@@ -38,7 +43,7 @@ void Automata::printMenu() {
         std::cout << "> Menu:" << std::endl;
         for (int i = 0; i < _menu.size(); i++) {
                 std::cout << i << ". [" << _menu[i] << "] - ";
-		std::cout << _prices[i] << "$" << std::endl;
+                std::cout << _prices[i] << "$" << std::endl;
         }
 }
 std::string Automata::getState() {
