@@ -1,70 +1,73 @@
+// Copyright 2025 A-Sabu
 #include "Automata.h"
+#include <iostream>
+#include <vector>
+#include <string>
 
-Automata::Automata(vector<string> menu, vector<float> prices) :
-	_cash(0), _menu(menu), _prices(prices), _state(OFF), _user_cash(0), _user_choice(-1) {}
+Automata::Automata(std::vector<std::string> menu, std::vector<float> prices) : 
+_cash(0), _menu(menu), _prices(prices), _state(OFF), _user_cash(0), _user_choice(-1) {
+}
 
 void Automata::on() {
 	if (_state == OFF) {
 		_state = WAIT;
 		printMenu();
-
+		
 	} else {
-		cout << "> Denied execution" << endl;
+		std::cout << "> Denied execution" << std::endl;
 	}
-};
+}
 void Automata::off() {
 	if (_state == WAIT) {
 		_state = OFF;
-
+		
 	} else {
-		cout << "> Denied execution" << endl;
+		std::cout << "> Denied execution" << std::endl;
 	}
-};
-void Automata::coin(float cash_now){
+}
+void Automata::coin(float cash_now) {
 	if (_state == WAIT || _state == ACCEPT) {
 		_state = ACCEPT;
 		_user_cash += cash_now;
+		
 	} else {
-		cout << "> Denied execution" << endl;
-	}
-};
-
-vector<string> Automata::getMenu() {
-	return _menu;
-};
-
-void Automata::printMenu() {
-	cout << "> Menu:" << endl;
-	for (int i = 0; i < _menu.size(); i++) {
-		cout << i << ". [" << _menu[i] << "] - " << _prices[i] << "$" << endl;
+		std::cout << "> Denied execution" << std::endl;
 	}
 }
 
-string Automata::getState() {
-	string string_state;
+std::vector<std::string> Automata::getMenu() {
+	return _menu;
+}
+void Automata::printMenu() {
+	std::cout << "> Menu:" << std::endl;
+	for (int i = 0; i < _menu.size(); i++) {
+		std::cout << i << ". [" << _menu[i] << "] - " << _prices[i] << "$" << std::endl;
+	}
+}
+std::string Automata::getState() {
+	std::string string_state;
 	switch (_state) {
-		case OFF:
-			string_state = "OFF";
-			break;
-		case WAIT:
-			string_state = "WAIT";
-			break;
-		case ACCEPT:
-			string_state = "ACCEPT";
-			break;
-		case CHECK:
-			string_state = "CHECK";
-			break;
-		case COOK:	
-			string_state = "COOK";
-			break;
-		default:
-			string_state = "UNKNOWN";
-			break;
+	case OFF:
+		string_state = "OFF";
+		break;
+	case WAIT:
+		string_state = "WAIT";
+		break;
+	case ACCEPT:
+		string_state = "ACCEPT";
+		break;
+	case CHECK:
+		string_state = "CHECK";
+		break;
+	case COOK:
+		string_state = "COOK";
+		break;
+	default:
+		string_state = "UNKNOWN";
+		break;
 	}
 	return string_state;
-};
-
+}
 void Automata::choice(int user_choice) {
 	if (_state == ACCEPT) {
 		if (0 <= user_choice && user_choice < _menu.size()) {
@@ -72,28 +75,28 @@ void Automata::choice(int user_choice) {
 			_state = CHECK;
 
 		} else {
-			cout << "> Uncorrect index" << endl;
+			std::cout << "> Uncorrect index" << std::endl;
 		}
-
+		
 	} else {
-		cout << "> Denied execution" << endl;
+		std::cout << "> Denied execution" << std::endl;
 	}
-};
+}
 void Automata::check() {
 	if (_state == CHECK) {
 		if (_prices[_user_choice] <= _user_cash) {
-			cout << "> Check done" << endl;
+			std::cout << "> Check done" << std::endl;
 			cook();
-
+			
 		} else {
-			cout << "> There is not enough money" << endl;
+			std::cout << "> There is not enough money" << std::endl;
 			cancel();
 		}
 
 	} else {
-		cout << "> Denied execution" << endl;
+		std::cout << "> Denied execution" << std::endl;
 	}
-};
+}
 void Automata::cancel() {
 	if (_state == ACCEPT || _state == CHECK) {
 		giveChange();
@@ -101,20 +104,20 @@ void Automata::cancel() {
 		printMenu();
 
 	} else {
-		cout << "> Denied execution" << endl;
+		std::cout << "> Denied execution" << std::endl;
 	}
-};
+}
 void Automata::cook() {
 	if (_state == CHECK) {
 		_state = COOK;
-		cout << "> Start cooking" << endl;
-		cout << "> Finish cooking" << endl;
+		std::cout << "> Start cooking" << std::endl;
+		std::cout << "> Finish cooking" << std::endl;
 		finish();
 
 	} else {
-		cout << "> Denied execution" << endl;
+		std::cout << "> Denied execution" << std::endl;
 	}
-};
+}
 void Automata::finish() {
 	if (_state == COOK) {
 		_cash += _user_cash - _prices[_user_choice];
@@ -122,12 +125,12 @@ void Automata::finish() {
 		_state = WAIT;
 
 	} else {
-		cout << "> Denied execution" << endl;
+		std::cout << "> Denied execution" << std::endl;
 	}
-};
+}
 float Automata::giveChange() {
 	float change = _user_cash;
 	_user_cash = 0;
 	_user_choice = -1;
 	return change;
-};
+}
